@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <title>MY TO DO LIST</title>
+  <link href="http://localhost:5000/static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+  <body>
+
+    <h1>Here is the list of things to do:</h1>
+      
+      <table>
+      <thead>
+        <tr>
+          <th>Task</th>
+          <th>email</th>
+          <th>Priority</th>
+        </tr>
+       </thead>
+    
+       <tbody>
+
+        {% for task in TO_DO_LIST %}
+	<tr>
+          <td>{{ task[0] }}</td>
+          <td>{{ task[1] }}</td>
+          <td>{{ task[2] }}</td>
+        </tr>
+        {% endfor %}
+
+      </tbody>
+      </table>
+        
+    <h2>Let's get to work!</h2>
+
+      <form action="/submit" method="post">
+
+        <p>Enter Task: <input type="text" name="task"></p>
+
+        <p>Enter Email Address: <input type="text" name="email"></p>
+
+        <p>Select Priority Level: 
+          <select name="priority">
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option></p> 
+
+       	<input type="submit" value="Add Task">
+
+      </form>
+
+      <form action="/save" method="post">
+        
+        <p>Save My List:</p>
+
+        <input type="submit" value="Save">
+
+      </form>
+
+      <form action="/clear" method="post">
+
+        <p>Clear the List:</p>
+
+        <input type="submit" value="Delete">
+
+      </form>
+
+    </body>
+
+</html>
